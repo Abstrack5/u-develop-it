@@ -23,12 +23,12 @@ const db = mysql.createConnection(
     console.log('Connected to the election database.')
 );
 
-// test server connection (client side)
-// app.get('/' , (req, res) => {
-//     res.json({message: 'Hello MOTO!'});
-// });
+db.query(`SELECT * FROM candidates`, (err, rows) => {
+    console.log(rows);
+});
 
-// response for requests not found(error)
+
+// response for requests not found(catchall)
 app.use((req, res) => {
     res.status(404).end();
 })
