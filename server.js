@@ -23,10 +23,17 @@ const db = mysql.createConnection(
     console.log('Connected to the election database.')
 );
 
-db.query(`SELECT * FROM candidates`, (err, rows) => {
+// db.query(`SELECT * FROM candidates`, (err, rows) => {
+//     console.log(rows);
+// });
+
+db.query(`SELECT * FROM candidates WHERE id = 1`, (err, rows) => {
+    if (err) {
+        console.log(err);
+    }
+
     console.log(rows);
 });
-
 
 // response for requests not found(catchall)
 app.use((req, res) => {
